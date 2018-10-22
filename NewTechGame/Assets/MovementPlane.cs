@@ -39,7 +39,7 @@ public class MovementPlane : MonoBehaviour {
 
 		mousePos = Input.mousePosition;
 		 
-		Ray ray = Camera.main.ScreenPointToRay(pos);
+		Ray ray = Camera.main.ScreenPointToRay(mousePos);
 		RaycastHit hit;
 
 		if (Physics.Raycast (ray, out hit, 5, ignoreLayer)) 
