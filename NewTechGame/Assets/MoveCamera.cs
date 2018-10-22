@@ -20,17 +20,21 @@ public class MoveCamera : MonoBehaviour {
 		Vector2 lookPos = Camera.main.ScreenToViewportPoint(mousePos);
 
 
-		if(lookPos.y >= 0.8f || lookPos.y <= 0.2f){
+		if(lookPos.y >= 0.85f || lookPos.y <= 0.15f){
 			float tiltAroundX = Input.GetAxis("Mouse Y") * -tiltAngle;
 			addition += tiltAroundX;
-			Quaternion target = Quaternion.Euler(Mathf.Clamp(addition, -30f, 30f), transform.rotation.y, transform.rotation.z);
+			Debug.Log(transform.localEulerAngles.y);
+			Quaternion target = Quaternion.Euler(Mathf.Clamp(addition, -30f, 30f), transform.localEulerAngles.y, Mathf.Clamp(transform.rotation.z, -0f, 0f));
 			transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.deltaTime * smooth);
 		}
         
 		//transform.rotation = target;
 
-		if(lookPos.x <= 0.2f){
+		if(lookPos.x <= 0.2f && lookPos.x >= 0.01f){
 			transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y - ((0.2f / lookPos.x) * 0.1f), transform.localEulerAngles.z);
+		}
+		if(lookPos.x <= 0.01f){
+			transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y - 2, transform.localEulerAngles.z);
 		}
 		
 		if(lookPos.x >= 0.8f){
