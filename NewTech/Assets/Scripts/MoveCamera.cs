@@ -20,7 +20,7 @@ public class MoveCamera : MonoBehaviour {
 		Vector2 lookPos = Camera.main.ScreenToViewportPoint(mousePos);
 
 
-		if(lookPos.y >= 0.85f || lookPos.y <= 0.15f){
+		if(lookPos.y >= 0.88f || lookPos.y <= 0.12f){
 			float tiltAroundX = Input.GetAxis("Mouse Y") * -tiltAngle;
 			addition += tiltAroundX;
 			Debug.Log(transform.localEulerAngles.y);

@@ -55,7 +55,7 @@ public class MovementPlane : MonoBehaviour {
 			groundSphere.transform.GetComponent<Renderer>().material.color = new Color(1,Mathf.Lerp(1,0,step),Mathf.Lerp(1,0,step));	
 			print("eye on floor");
 			if(groundSphere.transform.GetComponent<Renderer>().material.color == Color.red){
-				Camera.main.transform.position = new Vector3(groundSphere.transform.position.x, groundSphere.transform.position.y + 1, groundSphere.transform.position.z);
+				Camera.main.transform.position = new Vector3(groundSphere.transform.position.x, Camera.main.transform.position.y, groundSphere.transform.position.z);
 				step = 0.0f;
 				groundSphere.SetActive(false);
 			}
