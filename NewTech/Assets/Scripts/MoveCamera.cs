@@ -23,7 +23,7 @@ public class MoveCamera : MonoBehaviour {
 		if(lookPos.y >= 0.88f || lookPos.y <= 0.12f){
 			float tiltAroundX = Input.GetAxis("Mouse Y") * -tiltAngle;
 			addition += tiltAroundX;
-			Debug.Log(transform.localEulerAngles.y);
+			//Debug.Log(transform.localEulerAngles.y);
 			Quaternion target = Quaternion.Euler(Mathf.Clamp(addition, -30f, 30f), transform.localEulerAngles.y, Mathf.Clamp(transform.rotation.z, -0f, 0f));
 			transform.rotation = Quaternion.Slerp(transform.rotation, target,  Time.deltaTime * smooth);
 		}
