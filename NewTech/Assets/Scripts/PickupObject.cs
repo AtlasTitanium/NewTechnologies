@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Tobii.Gaming;
 public class PickupObject : MonoBehaviour {
-
+	public GameObject Canvas;
+	public string info;
 	private GazeAware Object;
 	private Vector3 pos;
 	private Vector3 mousePos;
@@ -38,8 +40,10 @@ public class PickupObject : MonoBehaviour {
 							step = 0.0f;
 							transform.parent = Camera.main.transform;
 							transform.localPosition = new Vector3(0.82f,-0.34f,1);
-							transform.rotation = Quaternion.identity;
+							transform.localEulerAngles = new Vector3(-32,0,0);
+							transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 							transform.GetComponent<Rigidbody>().useGravity = false;
+							StartCoroutine(WaitForExplenation());
 							holding = true;
 						}
 					}else {
@@ -50,6 +54,11 @@ public class PickupObject : MonoBehaviour {
 			}
 		} else {
 			if(Input.GetKeyDown(KeyCode.Space)){
+				StopAllCoroutines();
+				Canvas.SetActive(false);
+
+				transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
 				transform.GetComponent<Rigidbody>().useGravity = true;
 				transform.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 250);
 				transform.parent = null;
@@ -57,5 +66,11 @@ public class PickupObject : MonoBehaviour {
 			}
 		}
 		
+	}
+
+	IEnumerator WaitForExplenation(){
+		yield return new WaitForSeconds(5);
+		Canvas.SetActive(true);
+		Canvas.GetComponentInChildren<Text>().text = info;
 	}
 }

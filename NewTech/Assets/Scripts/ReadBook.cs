@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Tobii.Gaming;
 
 public class ReadBook : MonoBehaviour {
+	public GameObject Canvas;
+	public string info;
 	private GazeAware Object;
 	private Vector3 pos;
 	private Vector3 mousePos;
@@ -43,6 +46,7 @@ public class ReadBook : MonoBehaviour {
 							transform.localEulerAngles = new Vector3(-90,0,0);
 							transform.GetComponent<Rigidbody>().useGravity = false;
 							Camera.main.GetComponent<MoveCamera>().enabled = false;
+							StartCoroutine(WaitForExplenation());
 							holding = true;
 						}
 					}else {
@@ -65,6 +69,9 @@ public class ReadBook : MonoBehaviour {
 
 
 			if(Input.GetKeyDown(KeyCode.Space)){
+				StopAllCoroutines();
+				Canvas.SetActive(false);
+
 				transform.GetComponent<Rigidbody>().useGravity = true;
 				transform.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 250);
 				transform.parent = null;
@@ -73,5 +80,11 @@ public class ReadBook : MonoBehaviour {
 			}
 		}
 		
+	}
+
+	IEnumerator WaitForExplenation(){
+		yield return new WaitForSeconds(5);
+		Canvas.SetActive(true);
+		Canvas.GetComponentInChildren<Text>().text = info;
 	}
 }
