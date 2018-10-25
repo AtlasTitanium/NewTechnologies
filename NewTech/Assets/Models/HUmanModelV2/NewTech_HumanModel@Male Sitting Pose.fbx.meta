@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8356e4a7f4c845c4f82e7b0a3fd6f0d0
+guid: 8da12a43d4f3e194788ec6b9ff3139e8
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -145,6 +145,10 @@ ModelImporter:
     2100006: lambert9SGmat
     2100008: lambert4SGmat
     2100010: initialShadingGroupmat
+    2100012: lambert10SGmat
+    2100014: blinn1SGmat
+    2100016: lambert13SGmat
+    2100018: blinn3SGmat
     2300000: default
     3300000: default
     4300000: default
