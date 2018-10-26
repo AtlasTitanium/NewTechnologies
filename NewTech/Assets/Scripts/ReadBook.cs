@@ -25,11 +25,11 @@ public class ReadBook : MonoBehaviour {
      	pos.z = 0;
 
 		mousePos = Input.mousePosition;
-		Vector2 lookPos = Camera.main.ScreenToViewportPoint(mousePos);
+		Vector2 lookPos = Camera.main.ScreenToViewportPoint(pos);
 		
 		if(!holding){
 			if(Camera.main.transform.childCount <= 0){
-				Ray ray = Camera.main.ScreenPointToRay(mousePos);
+				Ray ray = Camera.main.ScreenPointToRay(pos);
 				RaycastHit hit;
 				if (Physics.Raycast (ray, out hit, 10)) 
 				{

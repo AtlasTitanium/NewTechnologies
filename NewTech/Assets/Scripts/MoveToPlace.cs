@@ -31,7 +31,7 @@ public class MoveToPlace : MonoBehaviour {
 		mousePos = Input.mousePosition;
 
 		if(Camera.main.GetComponent<MoveCamera>().enabled){
-			Ray ray = Camera.main.ScreenPointToRay(mousePos);
+			Ray ray = Camera.main.ScreenPointToRay(pos);
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit, 10)) 
 			{

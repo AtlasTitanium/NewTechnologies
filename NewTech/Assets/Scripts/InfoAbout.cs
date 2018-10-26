@@ -23,7 +23,7 @@ public class InfoAbout : MonoBehaviour {
 
 		mousePos = Input.mousePosition;
 		 
-		Ray ray = Camera.main.ScreenPointToRay(mousePos);
+		Ray ray = Camera.main.ScreenPointToRay(pos);
 		RaycastHit hit;
 		
 		if (Physics.Raycast (ray, out hit, 50)) 

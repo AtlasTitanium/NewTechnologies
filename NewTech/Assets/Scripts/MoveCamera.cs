@@ -17,7 +17,7 @@ public class MoveCamera : MonoBehaviour {
 		pos = TobiiAPI.GetGazePoint().Screen;
      	pos.z = 0;
 		mousePos = Input.mousePosition;
-		Vector2 lookPos = Camera.main.ScreenToViewportPoint(mousePos);
+		Vector2 lookPos = Camera.main.ScreenToViewportPoint(pos);
 
 
 		if(lookPos.y >= 0.88f || lookPos.y <= 0.12f){
